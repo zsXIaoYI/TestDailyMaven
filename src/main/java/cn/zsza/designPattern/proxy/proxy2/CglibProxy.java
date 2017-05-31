@@ -1,6 +1,6 @@
-package cn.zsza.reflect.proxy2;
+package cn.zsza.designPattern.proxy.proxy2;
 
-import cn.zsza.reflect.proxy1.PerformanceMonitor;
+import cn.zsza.designPattern.proxy.proxy1.PerformanceMonitor;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -20,7 +20,16 @@ public class CglibProxy implements MethodInterceptor {
         return enhancer.create();
     }
 
-
+    /**
+     *
+     * @param obj
+     * @param method
+     * @param args
+     * @param methodProxy
+     * @return
+     * @throws Throwable
+     * obj表示目标类的实例,method为目标类方法的反射对象,args为方法的动态入参,methodProxy为代理类的实例
+     */
     @Override
     public Object intercept(Object obj, Method method, Object[] args, MethodProxy methodProxy)
             throws Throwable {
