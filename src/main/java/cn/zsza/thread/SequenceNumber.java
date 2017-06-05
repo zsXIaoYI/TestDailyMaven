@@ -6,6 +6,9 @@ package cn.zsza.thread;
  */
 public class SequenceNumber {
 
+    /**
+     * Java8表达式
+     */
     private static ThreadLocal<Integer> seqNum = ThreadLocal.withInitial(() -> 0);
 
     public int getNextNum(){
