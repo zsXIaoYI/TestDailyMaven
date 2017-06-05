@@ -13,5 +13,12 @@ public class App {
 
         for (String path : classPaths)
             System.out.println("path:" + path);
+
+        System.out.println("classPath:" + new App().getClassPath());
+    }
+
+    public String getClassPath(){
+
+        return this.getClass().getClassLoader().getResource("xml/config.xml").toString();
     }
 }
