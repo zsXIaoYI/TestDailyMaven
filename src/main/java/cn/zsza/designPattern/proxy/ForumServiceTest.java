@@ -1,12 +1,11 @@
-package cn.zsza.reflect;
+package cn.zsza.designPattern.proxy;
 
-import cn.zsza.reflect.proxy1.ForumService;
-import cn.zsza.reflect.proxy1.ForumServiceImpl;
-import cn.zsza.reflect.proxy1.PerformanceHandler;
-import cn.zsza.reflect.proxy2.CglibProxy;
+import cn.zsza.designPattern.proxy.proxy1.ForumService;
+import cn.zsza.designPattern.proxy.proxy1.ForumServiceImpl;
+import cn.zsza.designPattern.proxy.proxy1.PerformanceHandler;
+import cn.zsza.designPattern.proxy.proxy2.CglibProxy;
 import org.junit.Test;
 import java.lang.reflect.Proxy;
-
 /**
  * Created by zs on 2017/5/16.
  * 18:44
