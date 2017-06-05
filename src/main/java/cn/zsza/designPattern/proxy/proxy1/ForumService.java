@@ -1,4 +1,4 @@
-package cn.zsza.reflect.proxy1;
+package cn.zsza.designPattern.proxy.proxy1;
 
 /**
  * 业务接口
