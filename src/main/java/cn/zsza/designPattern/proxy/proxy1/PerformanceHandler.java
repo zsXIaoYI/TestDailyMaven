@@ -1,4 +1,4 @@
-package cn.zsza.reflect.proxy1;
+package cn.zsza.designPattern.proxy.proxy1;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
