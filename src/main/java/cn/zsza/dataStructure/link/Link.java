@@ -26,6 +26,16 @@ public class Link {
         System.out.println(bookName + "...." + millionsSold);
     }
 
+    /**
+     *
+     * @param args
+     * 头插法
+     * LinkList:
+       初始化 firstLink为null
+       插入一个新节点,firstLink后移,newLink.next = firstLink;
+       把newLink作为头结点,firstLink = newLink;
+     */
+
     public static void main(String[] args) {
         LinkList theLinkedList = new LinkList();
         theLinkedList.insertFirstLink("java",200);
