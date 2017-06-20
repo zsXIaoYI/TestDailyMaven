@@ -49,6 +49,8 @@ public class IteratingCar {
                 .collect(Collectors.toList());
     }
 
+
+
     public static void main(String[] args) {
         List<Car> carList = carList();
 
@@ -59,5 +61,12 @@ public class IteratingCar {
 
         System.out.println(result);
         System.out.println(result2);
+
+
+        List<String> list = carList.stream()
+                .map(Car::getMake)
+                .collect(Collectors.toList());
+
+        System.out.println("list:" + list);
     }
 }
