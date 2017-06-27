@@ -24,10 +24,6 @@ public class TimeTest {
         calendar.setTimeInMillis(new Date().getTime());
         System.out.println("time:" + formatter.format(calendar.getTime()));
     }
-    @Test
-    public void daysOfTwoDate(){
-
-    }
 
     /**
      * 给定两个日期,求两个日期相隔天数
@@ -37,7 +33,7 @@ public class TimeTest {
      * @throws ParseException
      */
     public static int daysOfTwoDate(String startDate,String endDate) throws ParseException {
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         Date fDate=sdf.parse(startDate);
         Date oDate=sdf.parse(endDate);
@@ -66,9 +62,28 @@ public class TimeTest {
         }
         return "";
     }
+    @Test
+    public void test() throws ParseException {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date1 = sdf.parse("2017-02-25 10:28:50");
+        Date date2 = sdf.parse("2017-02-28 10:30:20");
+
+
+        long c1 = date1.getTime();
+
+        long c2 = date2.getTime();
+
+
+
+        System.out.println("c1:" + c1);
+        System.out.println("c2:" + c2);
+
+
+    }
 
     public static void main(String[] args) throws ParseException {
-        System.out.println(daysOfTwoDate("2017-02-25","2017-02-28"));
+        System.out.println(daysOfTwoDate("2017-02-25 10:28:50","2017-02-28 10:30:20"));
         System.out.println(getDateOfAfter("2017-02-16",5));
     }
 }
