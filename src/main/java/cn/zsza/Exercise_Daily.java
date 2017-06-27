@@ -6,8 +6,6 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.net.URLEncoder;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -325,15 +323,7 @@ public class Exercise_Daily {
         System.out.println(str);
 
     }
-    @Test
-    public void testMap(){
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("name", "xiaosi");
-        map.put("age", "12");
-        System.out.println("map="+map);
 
-        System.out.println("7.9".compareTo("7.8"));
-    }
     @Test
     public void testRandom(){
         int random = (int)(Math.random() * 1000);  // 返回一个随机的三位数
