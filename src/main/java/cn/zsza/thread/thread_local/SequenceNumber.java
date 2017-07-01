@@ -1,4 +1,4 @@
-package cn.zsza.thread;
+package cn.zsza.thread.thread_local;
 
 /**
  * Created by zs on 2017/6/1.
