@@ -22,6 +22,11 @@ public class CallableAddSum implements Callable<Integer> {
         return sum;
     }
     public static void main(String[] args) throws InterruptedException, ExecutionException {
+        /**
+         * public interface ExecutorService extends Executor
+         *
+         * public class Executors
+         */
         ExecutorService pool = Executors.newFixedThreadPool(2);
         /**
          * 开启两个线程求 1 到 100 的 和
