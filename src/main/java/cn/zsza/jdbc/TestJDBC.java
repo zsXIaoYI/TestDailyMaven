@@ -52,7 +52,7 @@ public class TestJDBC {
             conn = JdbcTools.getConnection();
             conn.setAutoCommit(false);
             st  = conn.prepareStatement(sql);
-            st.setInt(1,3);
+            st.setInt(1,1);
             ResultSet rs = st.executeQuery();
             if (rs.next()){
                 System.out.println("name=" +rs.getString(2));
@@ -66,24 +66,21 @@ public class TestJDBC {
             JdbcTools.free(rs,st,conn);
         }
     }
-
+    /**
+     * 更新操作,也是在事务提交的时候进行的
+     * @throws SQLException
+     */
     @Test
     public void updatetPerson() throws SQLException {
-        System.out.println("start。。。。。。。");
         String sql = "UPDATE tx_person SET pname = ? WHERE pid = ?";
         try {
             conn = JdbcTools.getConnection();
+            conn.setAutoCommit(false);
             st = conn.prepareStatement(sql);
             st.setString(1,"小三");
-            st.setInt(2,3);
-
-            conn.setAutoCommit(false);
+            st.setInt(2,1);
             st.executeUpdate();
-
-            System.out.println("11111111111111");
             conn.commit();
-            System.out.println("事务结束");
-
         } catch (SQLException e) {
             conn.rollback();
             e.printStackTrace();
