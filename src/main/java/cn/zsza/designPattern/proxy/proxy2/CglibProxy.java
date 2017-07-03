@@ -29,6 +29,7 @@ public class CglibProxy implements MethodInterceptor {
      * @return
      * @throws Throwable
      * obj表示目标类的实例,method为目标类方法的反射对象,args为方法的动态入参,methodProxy为代理类的实例
+     * 由于CGLib采用动态创建子类的方法生成代理对象,所以不能对目标类中的final或private方法进行代理
      */
     @Override
     public Object intercept(Object obj, Method method, Object[] args, MethodProxy methodProxy)
