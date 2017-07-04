@@ -10,9 +10,11 @@ import lombok.Data;
 public class User {
     private int id;
     private String name;
+    private String from;
 
-    public User(int id, String name) {
+    public User(int id, String name,String from) {
         this.id = id;
         this.name = name;
+        this.from = from;
     }
 }
