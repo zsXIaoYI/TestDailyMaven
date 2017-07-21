@@ -90,7 +90,7 @@ public class ListTest {
     @Test
     public void testArrays(){
         int a1[] = new int[]{1,2,3};
-        Integer a2[] = new Integer[]{1,2,3};
+        Integer a2[]  = new Integer[]{1,2,3};
         String a3[] = new String[]{"a","b","c"};
 
         System.out.println(Arrays.asList(a1));
@@ -109,6 +109,5 @@ public class ListTest {
 //        System.out.println(contents);
         System.out.println(list.size());
 
-        "aa".substring(2,3);
     }
 }
