@@ -247,46 +247,7 @@ public class Exercise_Daily {
     }
 
 
-    /**
-     * 直接插入排序
-     *
-     */
-	/*  {40,90,30,80,50}
-	 * 当i=1时，tmp =90
-       j=0  j>=0&& a[0]>tmp 不成立  不交换  {40,90,30,80,50}
-   当i=2时，tmp =30
-       j=1  j>=0&& a[1]>tmp  成立     交换  {40,30,90,80,50};
-       j=0  j>=0&& a[0]>tmp  成立     交换  {30,40,90,80,50};
-   当i=3时，tmp =80
-       j=2, j>=0&& a[2]>tmp  成立           {30,40,80,90,50};
-       j=1, j>=0&& a[1]>tmp 不成立
-       j=1, j>=0&& a[0]>tmp 不成立
-   当i=4时，tmp=50
-       j=3, j>=0&& a[3]>tmp  成立        {30,40,80,50,90};
-       j=2, j>=0&& a[2]>tmp  成立        {30,40,50,80,90};
-	 */
-    @Test
-    public void testInsertSort(){
-        int array[] = new int[]{40,90,30};
-        System.out.println("排序前：");
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + " ");
-        }
-        System.out.println();
-        int tmp;
-        int j;
-        for (int i = 1; i < array.length; i++) {
-            tmp = array[i];
-            for (j = i-1; j >= 0&&array[j]>tmp ; j--) {
-                array[j+1] = array[j];
-            }
-            array[j+1] = tmp;
-        }
-        System.out.println("排序后：");
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i]+" ");
-        }
-    }
+
     @Test
     public void testOneArrayMemory(){
         int num = 1024*1024*2;
