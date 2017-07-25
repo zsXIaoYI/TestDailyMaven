@@ -1,5 +1,6 @@
 package cn.zsza;
 
+import cn.zsza.util.InviteType;
 import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
@@ -399,6 +400,17 @@ public class Exercise_Daily {
         System.out.println(e);
         System.out.println(f);
         System.out.println(g);
+    }
+
+    /**
+     * 枚举测试
+     */
+    @Test
+    public void testEnum(){
+        String value = InviteType.INVITE.value();
+        String name = InviteType.INVITE.name();
+        System.out.println("value:" + value);
+        System.out.println("name:" + name);
     }
 
 }
