@@ -36,6 +36,7 @@ public class ListTest {
          */
         parentList.set(1,"new 1");
 
+
         System.out.println("after set parentList:" + parentList);
     }
 
@@ -97,9 +98,7 @@ public class ListTest {
         System.out.println(Arrays.asList(a2));
         System.out.println(Arrays.asList(a3));
 
-
     }
-
     @Test
     public void testRead() throws IOException {
         String contents = new String(Files.readAllBytes(Paths.get("D:\\WorkSpace_new\\IDEA\\TestDailyMaven\\pom.xml")),
