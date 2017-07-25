@@ -87,14 +87,21 @@ public class CollectionsTest {
         Collections.swap(list,0,1);
         System.out.println(list);
     }
-
+    /**
+     * 返回的集合对象是immutable的,不可更改的
+     */
     @Test
     public void testEmptyList(){
-        /**
-         * 返回的集合对象是immutable的,不可更改的
-         */
         List emptyList = Collections.EMPTY_LIST;
         System.out.println("emptyList:" + emptyList);
         System.out.println("size:" + emptyList.size());
+    }
+
+    /**
+     * 返回一个线程安全的list
+     */
+    @Test
+    public void testSynchronizedList(){
+        List<String> strList = Collections.synchronizedList(list);
     }
 }
