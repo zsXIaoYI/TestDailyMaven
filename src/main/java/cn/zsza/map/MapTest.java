@@ -1,8 +1,8 @@
 package cn.zsza.map;
 
+import cn.zsza.zs_base.entity.Student;
 import org.junit.Test;
 import java.util.*;
-
 /**
  * Created by zs on 2017/6/8.
  * 16:51
@@ -19,7 +19,7 @@ public class MapTest {
         map.containsKey("01");
         // 2. 移除某个键，如果键不存在，返回null;存在,则返回键所对应的值
         map.remove("02");
-        // 3. 返回所有键的值：map.values();
+        // 3. 返回所有键的值：LRU.values();
         map.values();
         // 4. 返回所有的键
         Set<String> set = map.keySet();
@@ -85,12 +85,35 @@ public class MapTest {
         hashtable.put("1","aa");
         hashtable.put("3","cc");
         hashtable.put("2", "bb");
-        System.out.println("hashtable=" + hashtable);
+
         Enumeration<String> ele = hashtable.keys();    // 返回所有的键
         while (ele.hasMoreElements()){
             String key = ele.nextElement();
             String value = hashtable.get(key);
             System.out.println("...key="+ key + "...value="+value);
+        }
+    }
+
+    @Test
+    public void testMapOfStudent(){
+        Map<Student,String> map = new HashMap<Student, String>();
+        /**
+         * 当以Student对象作为key存储时
+         * 下面两行代码，其存入的两个对象的hashcode值一样，则会调用equals方法，
+         *   equals方法返回true,则不能存入;返回false,则能存入
+         */
+        map.put(new Student("aa", 11), "beijing");
+        map.put(new Student("ab", 11), "nanjing");
+
+        String city = map.get(new Student("aa", 11));     // 返回nanjing，该行new出的对象和map中的key对象hashcode一样
+        System.out.println("city="+city);
+
+        Set<Student> keySet = map.keySet();
+        Iterator<Student> it = keySet.iterator();    //LRU.keySet().iterator()
+        while(it.hasNext()){
+            Student stu = it.next();
+            String addr = map.get(stu);
+            System.out.println(stu+"..."+addr);
         }
     }
 
