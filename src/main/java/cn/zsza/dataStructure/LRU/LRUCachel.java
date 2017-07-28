@@ -65,7 +65,13 @@ public class LRUCachel<K,V> {
             first = last = entry;
             return;
         }
-
+        /**
+         * 当添加第二个节点时..........
+         * 当前节点.next = first
+         * first.pre = 当前节点
+         * first = 当前节点
+         * 当前节点.pre = null
+         */
         entry.next = first;
         first.pre = entry;
         first = entry;
