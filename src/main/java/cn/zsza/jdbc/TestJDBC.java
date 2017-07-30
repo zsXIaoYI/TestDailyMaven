@@ -42,11 +42,12 @@ public class TestJDBC {
 
     /**
      * 查询操作，不等事务提交立即执行
+     * For Update：对当前事务添加共享锁
      * @throws SQLException
      */
     @Test
     public void testSelectOneById() throws SQLException {
-        String sql = "SELECT * FROM tx_person WHERE pid = ?";
+        String sql = "SELECT * FROM tx_person WHERE pid = ? FOR UPDATE";
 
         try {
             conn = JdbcTools.getConnection();
@@ -57,7 +58,6 @@ public class TestJDBC {
             if (rs.next()){
                 System.out.println("name=" +rs.getString(2));
             }
-            System.out.println("事务提交之前");
             conn.commit();
         } catch (SQLException e) {
             conn.rollback();
@@ -68,6 +68,7 @@ public class TestJDBC {
     }
     /**
      * 更新操作,也是在事务提交的时候进行的
+     * MySQL对某条记录进行更新操作,当前事务正在更新，其他事务可以查询，但不可以更新
      * @throws SQLException
      */
     @Test
@@ -77,7 +78,7 @@ public class TestJDBC {
             conn = JdbcTools.getConnection();
             conn.setAutoCommit(false);
             st = conn.prepareStatement(sql);
-            st.setString(1,"小三");
+            st.setString(1,"小111");
             st.setInt(2,1);
             st.executeUpdate();
             conn.commit();
@@ -89,4 +90,36 @@ public class TestJDBC {
         }
 
     }
+
+    /**
+     * 查询操作，不等事务提交立即执行
+     * @throws SQLException
+     */
+    @Test
+    public void testSelectOneById2() throws SQLException {
+        String sql = "SELECT * FROM tx_person WHERE pid = ?";
+
+        try {
+            conn = JdbcTools.getConnection();
+            conn.setAutoCommit(false);
+            st  = conn.prepareStatement(sql);
+            st.setInt(1,1);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()){
+                System.out.println("name=" +rs.getString(2));
+            }
+
+            ResultSet rs2 = st.executeQuery();
+            if (rs2.next()){
+                System.out.println("name=" +rs2.getString(2));
+            }
+            conn.commit();
+        } catch (SQLException e) {
+            conn.rollback();
+            e.printStackTrace();
+        }finally {
+            JdbcTools.free(rs,st,conn);
+        }
+    }
+
 }
