@@ -43,7 +43,11 @@ public class Link {
         theLinkedList.insertFirstLink("python",80);
         theLinkedList.insertFirstLink("C++",60);
 
+
+        theLinkedList.removeFirstLink();
         theLinkedList.display();
+
+
     }
 }
 
@@ -58,6 +62,15 @@ class LinkList{
         return firstLink == null;
     }
 
+    /**
+     * 新加入的节点放入链表的头部
+     * 链表初始化，firstLink = null
+     * 加入第一个节点:newLink.next = firstLink, 新的节点.next指向firstLink
+     * 然后把新加入的节点作为firstLink:firstLink = newLink
+     * @param bookName
+     * @param millionsSold
+     */
+
     public void insertFirstLink(String bookName, int millionsSold){
         Link newLink = new Link(bookName, millionsSold);
 
@@ -67,6 +80,10 @@ class LinkList{
 
     }
 
+    /**
+     * 移除头元素,然后把firstLink.next指向first
+     * @return
+     */
     public Link removeFirstLink(){
         Link linkReference = firstLink;
         if (!isEmpty()){
@@ -82,9 +99,8 @@ class LinkList{
         Link theLink = firstLink;
 
         while (theLink != null){
-            theLink.display();
             System.out.println("Next link:" + theLink.next);
-
+            theLink.display();
             theLink = theLink.next;
             System.out.println();
         }
