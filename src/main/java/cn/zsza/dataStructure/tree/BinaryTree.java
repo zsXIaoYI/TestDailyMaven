@@ -4,8 +4,15 @@ package cn.zsza.dataStructure.tree;
  * Created by ZhangSong on 2016/8/13.
  * 二叉树遍历
  */
+
+/**
+ * 面向对象的思想，二叉树节点:Nodes
+ * 属性:int data
+ *      Nodes left;
+ *      Nodes right;
+ */
 class Nodes {
-    int data;      //根节点数据
+    int data;       //根节点数据
     Nodes left;     //左子树
     Nodes right;    //右子树
 
@@ -15,6 +22,15 @@ class Nodes {
         right = null;
     }
 
+    /**
+     * 12作为根节点
+     *  76进来,比根节点12大,放到根节点的右子树上,放到右子树上之前,先判断根节点的右子树是否为空,如果为空,直接把
+     *  该节点作为12的右子树节点;
+     *  35进来,比当前根节点大,也是放到右子树上,然后这时判断根节点的右子树不为空,则root.right作为根节点,
+     *  递归调用insert(root.right,data)
+     * @param root
+     * @param data
+     */
     public void insert(Nodes root,int data){     //向二叉树中插入子节点
         if(data > root.data)  {                            //插入的节点比根节点大
             if(root.right==null){
@@ -62,7 +78,8 @@ public class BinaryTree {
     }
 
     public static void main(String[] str) {
-        int[] array = {12, 76, 35, 22, 16, 48, 90, 46, 9, 40};
+//        int[] array = {12, 76, 35, 22, 16, 48, 90, 46, 9, 40};
+        int[] array = {12, 76, 35, 22, 16, 9};
         Nodes root = new Nodes(array[0]);   //创建二叉树
         for (int i = 1; i < array.length; i++) {
             root.insert(root, array[i]);       //向二叉树中插入数据
