@@ -3,6 +3,7 @@ package cn.zsza.dataStructure.link;
 /**
  * Created by ZhangSong on 2017/5/2.
  * 22:27
+ * Link代表一本书的名字和销量
  */
 public class Link {
     public String bookName;
@@ -31,63 +32,96 @@ public class Link {
      * @param args
      * 头插法
      * LinkList:
-       初始化 firstLink为null
-       插入一个新节点,firstLink后移,newLink.next = firstLink;
-       把newLink作为头结点,firstLink = newLink;
+       初始化 first为null
+       插入一个新节点,first后移,newLink.next = first;
+       把newLink作为头结点,first = newLink;
      */
 
     public static void main(String[] args) {
         LinkList theLinkedList = new LinkList();
-        theLinkedList.insertFirstLink("java",200);
-        theLinkedList.insertFirstLink("php",100);
-        theLinkedList.insertFirstLink("python",80);
-        theLinkedList.insertFirstLink("C++",60);
+        theLinkedList.insertfirst2("java",200);
+        theLinkedList.insertfirst2("php",100);
+        theLinkedList.insertfirst2("python",80);
+        theLinkedList.insertfirst2("C++",60);
 
+//        theLinkedList.insertlast("java",200);
+//        theLinkedList.insertlast("php",100);
+//        theLinkedList.insertlast("python",80);
+//        theLinkedList.insertlast("C++",60);
 
-        theLinkedList.removeFirstLink();
+//        theLinkedList.removefirst();
         theLinkedList.display();
-
-
     }
 }
-
 class LinkList{
-    public Link firstLink;
+    public Link first;  // 头节点
+
+    public Link last;   // 尾节点
+
+    public int size;
 
     public LinkList() {
-        this.firstLink = null;
+        this.first = null;
+        this.last = null;
     }
 
     public boolean isEmpty(){
-        return firstLink == null;
+        return first == null;
     }
-
-    /**
+    /**(第一个版本不考虑尾节点)
      * 新加入的节点放入链表的头部
-     * 链表初始化，firstLink = null
-     * 加入第一个节点:newLink.next = firstLink, 新的节点.next指向firstLink
-     * 然后把新加入的节点作为firstLink:firstLink = newLink
+     * 链表初始化，first = null
+     * 加入第一个节点:newLink.next = first, 新的节点.next指向first
+     * 然后把新加入的节点作为first:first = newLink
      * @param bookName
      * @param millionsSold
      */
 
-    public void insertFirstLink(String bookName, int millionsSold){
+    public void insertfirst(String bookName, int millionsSold){
         Link newLink = new Link(bookName, millionsSold);
+        newLink.next = first;
+        first = newLink;
+    }
+    /**
+     * 考虑尾节点
+     * @param bookName
+     * @param millionsSold
+     */
+    public void insertfirst2(String bookName, int millionsSold){
+        Link newLink = new Link(bookName, millionsSold);
+        if (size == 0){
+            fillStart(newLink);
+        }else {
+            newLink.next = first;
+            first = newLink;
+        }
+        size++;
+    }
 
-        newLink.next = firstLink;
+    private void fillStart(Link link) {
+        first = link;
+        last = first;
+    }
 
-        firstLink = newLink;
-
+    public void insertlast(String bookName, int millionsSold){
+        Link newLink = new Link(bookName, millionsSold);
+        if (first == null){
+            first = newLink;
+            last = first;
+        }else {
+            last.next = newLink;
+            last = newLink;
+        }
     }
 
     /**
-     * 移除头元素,然后把firstLink.next指向first
+     * 移除头元素,然后把first.next指向first
      * @return
      */
-    public Link removeFirstLink(){
-        Link linkReference = firstLink;
+    public Link removefirst(){
+        Link linkReference = first;
         if (!isEmpty()){
-            firstLink = firstLink.next;
+            first = first.next;
         }else {
             System.out.println("empty link");
         }
@@ -96,7 +130,7 @@ class LinkList{
     }
 
     public void display(){
-        Link theLink = firstLink;
+        Link theLink = first;
 
         while (theLink != null){
             System.out.println("Next link:" + theLink.next);
@@ -106,7 +140,7 @@ class LinkList{
         }
     }
     public Link find(String bookName){
-        Link theLink = firstLink;
+        Link theLink = first;
         if (!isEmpty()){
             while (theLink.bookName != bookName){
                 if (theLink.next == null){
@@ -123,8 +157,8 @@ class LinkList{
     }
 
     public Link removeLink(String bookName){
-        Link currentLink = firstLink;
-        Link previousLink = firstLink;
+        Link currentLink = first;
+        Link previousLink = first;
 
         while (currentLink.bookName != bookName){
             if (currentLink.next == null){
@@ -134,8 +168,8 @@ class LinkList{
                 currentLink = currentLink.next;
             }
         }
-        if (currentLink == firstLink){
-            firstLink = firstLink.next;
+        if (currentLink == first){
+            first = first.next;
         }else {
             previousLink.next = currentLink.next;
         }
