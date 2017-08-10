@@ -24,10 +24,13 @@ import java.lang.reflect.Proxy;
  *  但CGLib在创建代理对象时所花费的时间却比JDK动态代理多（大概8倍）
  *  对于singleton的代理对象或者具有实例池的代理,因此无须频繁地创建代理对象,所以比较适合采用
  *  CGLib动态代理技术;反之则适合采用JDK动态代理技术
+ *
+ *  对于singleton的代理,我们推荐使用CGLib;对于其他作用域类型的代理,最好使用JDK动态代理。
+ *  原因是虽然CGLib创建代理时速度满,但其创建出的代理对象运行效率高;而使用JDK创建代理的表现则相反
  */
 public class ForumServiceTest {
     /**
-     * jdk实现动态代理
+     * jdk实现动态代理,只能为接口创建代理实例
      */
     @Test
     public void jdkProxy(){
