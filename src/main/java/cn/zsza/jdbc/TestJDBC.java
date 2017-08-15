@@ -39,6 +39,30 @@ public class TestJDBC {
             JdbcTools.free(rs,st,conn);
         }
     }
+    @Test
+    public void addBatch() throws SQLException {
+        String sql = "INSERT INTO  tx_person (pname,age) VALUES (?,?)";
+        try {
+            conn = JdbcTools.getConnection();
+            conn.setAutoCommit(false);
+            st  = conn.prepareStatement(sql);
+            for (int i = 1; i < 1000001; i++){
+                st.setString(1, "a"+ i);
+                st.setInt(2,(int)(Math.random()*50) + 50);
+                st.addBatch();
+                if(i % 1000 == 0){
+                    st.executeBatch();
+                    conn.commit();
+                    st.clearBatch();
+                }
+            }
+        } catch (SQLException e) {
+            conn.rollback();
+            e.printStackTrace();
+        }finally {
+            JdbcTools.free(rs,st,conn);
+        }
+    }
 
     /**
      * 查询操作，不等事务提交立即执行
