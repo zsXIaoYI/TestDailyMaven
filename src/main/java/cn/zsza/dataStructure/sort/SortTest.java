@@ -8,6 +8,9 @@ import java.util.List;
 /**
  * Created by zs on 2017/6/9.
  * 18:07
+ *
+ * 稳定: 插入排序、冒泡排序、归并排序、计数排序、基数排序、桶排序
+ * 不稳定: 快速排序、堆排序、希尔排序、选择排序
  */
 public class SortTest {
     /**
