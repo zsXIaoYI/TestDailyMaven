@@ -2,6 +2,7 @@ package cn.zsza.dataStructure.sort;
 /**
  * Created by user on 2016/7/19.
  * 快速排序
+ * 不稳定排序
  */
 class sortTool{
     public static void qsort(int[] arr, int low, int high){
