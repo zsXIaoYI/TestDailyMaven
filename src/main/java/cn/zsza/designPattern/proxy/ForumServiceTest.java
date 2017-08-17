@@ -4,6 +4,9 @@ import cn.zsza.designPattern.proxy.proxy1.ForumService;
 import cn.zsza.designPattern.proxy.proxy1.ForumServiceImpl;
 import cn.zsza.designPattern.proxy.proxy1.PerformanceHandler;
 import cn.zsza.designPattern.proxy.proxy2.CglibProxy;
+import cn.zsza.designPattern.proxy.rpc.HelloWorldService;
+import cn.zsza.designPattern.proxy.rpc.HelloWorldServiceImpl;
+import cn.zsza.designPattern.proxy.rpc.RPCProxyClient;
 import org.junit.Test;
 import java.lang.reflect.Proxy;
 /**
@@ -55,5 +58,11 @@ public class ForumServiceTest {
         ForumService forumService = (ForumService) proxy.getProxy(ForumServiceImpl.class);
 
         forumService.removeForum(10);
+    }
+    @Test
+    public void testRpcClient(){
+        HelloWorldService helloWorldService = (HelloWorldService) RPCProxyClient.getProxy(new HelloWorldServiceImpl());
+
+        helloWorldService.sayHello("小A");
     }
 }
