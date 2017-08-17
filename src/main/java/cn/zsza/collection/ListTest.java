@@ -14,6 +14,12 @@ import java.util.ListIterator;
 /**
  * Created by zs on 2017/6/12.
  * 18:16
+ * 集合的特点：
+ *   可变长，可变长是相对而言，内部还是通过数组实现的。
+ * 集合的系统开销:
+ *   1.一个是数组总是比我们实际用的长度长，所以存在空间浪费
+ *   2.当一个数组不够长时，需要新建立一个更长的数组，同时把旧的
+ *     数组的数据复制到新的数组中，这样操作会比较消耗系统性能
  */
 public class ListTest {
     private List<String> parentList;
