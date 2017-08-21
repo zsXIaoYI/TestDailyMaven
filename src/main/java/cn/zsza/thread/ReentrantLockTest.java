@@ -34,12 +34,7 @@ public class ReentrantLockTest {
 
     public static void main(String[] args) throws InterruptedException {
         for (int i = 0; i < 5; i++){
-            new Thread(){
-                @Override
-                public void run() {
-                    new ReentrantLockTest().doFirstLock();
-                }
-            }.start();
+            new Thread(() -> new ReentrantLockTest().doFirstLock()).start();
         }
         TimeUnit.SECONDS.sleep(10 * 1);
     }
