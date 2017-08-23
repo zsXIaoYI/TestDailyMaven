@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <!--
+      scope属性，当为singleton时，为单例    默认为单列
+                当为prototype时，为多例模式
+      lazy-init="true"  容器初始化时，不初始化bean-->
+    <bean id="personDao" class="cn.zsza.spring.dao.impl.PersonDaoBean" lazy-init="false"
+          scope="prototype"/>
+
+</beans>
