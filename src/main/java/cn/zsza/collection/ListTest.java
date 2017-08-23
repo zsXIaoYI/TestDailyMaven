@@ -83,11 +83,13 @@ public class ListTest {
         while (iterator.hasNext()){
             String obj = iterator.next();
             System.out.println("obj:" + obj);
-            logger.info("res obj:" + obj);
+//            logger.info("res obj:" + obj);
         }
 
         while (iterator.hasPrevious())
             System.out.println("逆向遍历:" + iterator.previous());
+
+        logger.info("....debug mes");
     }
 
     /**
