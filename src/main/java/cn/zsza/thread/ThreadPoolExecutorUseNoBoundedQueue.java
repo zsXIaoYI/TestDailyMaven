@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by zs on 2017/8/18.
  * 16:27
- * 使用有界队列
+ * 使用无界队列
  */
 public class ThreadPoolExecutorUseNoBoundedQueue implements Runnable {
     private String name;
