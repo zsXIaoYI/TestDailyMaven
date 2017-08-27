@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <!--引入目标类和切面-->
+    <bean id="personDao" class="cn.zsza.spring.dao.impl.PersonDaoBean"/>
+    <bean id="txa" class="cn.zsza.spring.transaction.Txa"/>
+
+    <aop:config>
+
+        <!--引入切入点和表达式-->
+        <aop:pointcut id="perform" expression="execution(* cn.zsza.spring.dao.impl.PersonDaoBean.*(..))"/>
+
+        <aop:aspect ref="txa">
+            <aop:before method="beginTransaction" pointcut-ref="perform"/>
+            <aop:after-returning method="commit" pointcut-ref="perform"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
