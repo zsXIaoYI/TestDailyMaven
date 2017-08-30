@@ -17,7 +17,6 @@ public class SpringTest {
     @Test
     public void test1(){
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/Spring/beans.xml");
-        System.out.println("getBean方法之前");
         PersonDao personDao = (PersonDao) ctx.getBean("personDao");
         PersonDao personDao1 = (PersonDao) ctx.getBean("personDao");
 
