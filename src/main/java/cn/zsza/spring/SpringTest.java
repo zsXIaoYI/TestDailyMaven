@@ -3,6 +3,7 @@ package cn.zsza.spring;
 import cn.zsza.spring.aspect.PersonService;
 import cn.zsza.spring.dao.PersonDao;
 import cn.zsza.spring.service.UserService;
+import cn.zsza.spring.zs.ZSClassPathXMLApplicationContext;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -62,5 +63,8 @@ public class SpringTest {
         personService.save("小A");
 
     }
-
+    @Test
+    public void testMyBeanXML(){
+        ZSClassPathXMLApplicationContext ctx = new ZSClassPathXMLApplicationContext("Spring/Spring-ref.xml");
+    }
 }
