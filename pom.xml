@@ -92,14 +92,16 @@
     <dependency>
       <groupId>org.aspectj</groupId>
       <artifactId>aspectjrt</artifactId>
-      <version>1.8.6</version>
+      <version>1.8.10</version>
     </dependency>
 
+
     <dependency>
-      <groupId>aspectj</groupId>
+      <groupId>org.aspectj</groupId>
       <artifactId>aspectjweaver</artifactId>
-      <version>1.5.3</version>
+      <version>1.8.10</version>
     </dependency>
+
 
     <dependency>
       <groupId>org.springframework</groupId>
@@ -107,6 +109,33 @@
       <version>${spring.version}</version>
     </dependency>
 
+
+
+    <!--添加lombok支持-->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.16.14</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>3.6.0</version>
+    </dependency>
+
+    <!--dom4j-->
+    <dependency>
+      <groupId>dom4j</groupId>
+      <artifactId>dom4j</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>dom4j</groupId>
+      <artifactId>dom4j</artifactId>
+      <version>1.1</version>
+    </dependency>
 
   </dependencies>
 
