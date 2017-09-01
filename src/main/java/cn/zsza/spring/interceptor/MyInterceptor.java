@@ -39,15 +39,15 @@ public class MyInterceptor {
     }
 
 
-    @AfterReturning("anyMethod()")
-    public void doAfterReturn(){
-        System.out.println("AfterReturning...通知");
-    }
+//    @AfterReturning("anyMethod()")
+//    public void doAfterReturn(){
+//        System.out.println("AfterReturning...通知");
+//    }
 
 
     /**
      * 例外通知
-     * 出现例外通知时，后置通知不会执行
+     * 出现例外通知时，AfterReturning通知不会执行
      * @param e
      */
     @AfterThrowing(pointcut = "anyMethod()",throwing = "e")
@@ -55,6 +55,22 @@ public class MyInterceptor {
         System.out.println("例外通知："+ e);
     }
 
+
+    public void tryCatch(){
+        try{
+            // Before
+
+            // 业务方法
+
+            // AfterReturning
+
+        }catch (Exception e){
+            // 例外通知
+
+        }finally {
+            // After
+        }
+    }
 
 
 }
