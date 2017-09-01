@@ -31,21 +31,17 @@ public class MyInterceptor {
         System.out.println("前置通知:"+name);
     }
 
-    /**
-     * 该通知在AfterReturning通知之前执行
-     */
+
 
     @After("anyMethod()")
     public void doAfter(){
-        System.out.println("后置通知");
+        System.out.println("doAfter..通知");
     }
 
-    /**
-     * 后置通知
-     */
+
     @AfterReturning("anyMethod()")
     public void doAfterReturn(){
-        System.out.println("最终通知");
+        System.out.println("AfterReturning...通知");
     }
 
 
