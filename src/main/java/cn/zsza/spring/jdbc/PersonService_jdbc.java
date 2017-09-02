@@ -2,6 +2,8 @@ package cn.zsza.spring.jdbc;
 
 
 import cn.zsza.spring.entity.Person;
+
+import java.io.FileNotFoundException;
 import java.util.List;
 
 /**
@@ -13,4 +15,6 @@ public interface PersonService_jdbc {
     Object getPerson(Integer personId);
     List<Person> getPersons();
     void deletePerson(Integer id) throws Exception;
+    void deletePersonNeSTED(Integer id) throws FileNotFoundException;
+
 }
