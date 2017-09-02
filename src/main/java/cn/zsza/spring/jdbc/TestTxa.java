@@ -22,7 +22,6 @@ public class TestTxa {
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);     // JdbcTemplate接收一个数据源
     }
-
     /**
      *
      * deletePerson()方法被 @Transactional(propagation = Propagation.NEVER) 修饰
@@ -54,7 +53,8 @@ public class TestTxa {
 
     /**
      * deletePersonNeSTED()被 @Transactional(propagation = Propagation.NESTED) 修饰,
-     * 该方法出现unchecked例外，只有deletePersonNeSTED()方法会回滚，不会导致前后事务代码回滚
+     * 该方法出现unchecked例外，只有deletePersonNeSTED()方法会回滚，不会导致前后事务代码回滚.
+     * 外部事务的回滚会导致整个事务的回滚
      * @param id
      * @param person
      */
