@@ -63,14 +63,45 @@ public class TestJDBC {
             JdbcTools.free(rs,st,conn);
         }
     }
-
     /**
      * 查询操作，不等事务提交立即执行
-     * For Update：对当前事务添加共享锁
      * @throws SQLException
      */
     @Test
     public void testSelectOneById() throws SQLException {
+        String sql = "SELECT * FROM tx_person WHERE pid = ?";
+
+        try {
+            conn = JdbcTools.getConnection();
+            conn.setAutoCommit(false);
+            st  = conn.prepareStatement(sql);
+            st.setInt(1,1);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()){
+                System.out.println("name=" +rs.getString(2));
+            }
+
+            ResultSet rs2 = st.executeQuery();
+            if (rs2.next()){
+                System.out.println("name=" +rs2.getString(2));
+            }
+            conn.commit();
+        } catch (SQLException e) {
+            conn.rollback();
+            e.printStackTrace();
+        }finally {
+            JdbcTools.free(rs,st,conn);
+        }
+    }
+
+    /**
+     * 查询操作，不等事务提交立即执行
+     * For Update：对当前事务添加共享锁
+     * 其他事务可以查询、但不可以更新
+     * @throws SQLException
+     */
+    @Test
+    public void testSelectOneById2() throws SQLException {
         String sql = "SELECT * FROM tx_person WHERE pid = ? FOR UPDATE";
 
         try {
@@ -115,35 +146,6 @@ public class TestJDBC {
 
     }
 
-    /**
-     * 查询操作，不等事务提交立即执行
-     * @throws SQLException
-     */
-    @Test
-    public void testSelectOneById2() throws SQLException {
-        String sql = "SELECT * FROM tx_person WHERE pid = ?";
 
-        try {
-            conn = JdbcTools.getConnection();
-            conn.setAutoCommit(false);
-            st  = conn.prepareStatement(sql);
-            st.setInt(1,1);
-            ResultSet rs = st.executeQuery();
-            if (rs.next()){
-                System.out.println("name=" +rs.getString(2));
-            }
-
-            ResultSet rs2 = st.executeQuery();
-            if (rs2.next()){
-                System.out.println("name=" +rs2.getString(2));
-            }
-            conn.commit();
-        } catch (SQLException e) {
-            conn.rollback();
-            e.printStackTrace();
-        }finally {
-            JdbcTools.free(rs,st,conn);
-        }
-    }
 
 }
