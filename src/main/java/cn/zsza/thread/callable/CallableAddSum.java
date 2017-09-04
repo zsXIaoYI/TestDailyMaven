@@ -26,6 +26,9 @@ public class CallableAddSum implements Callable<Integer> {
          * public interface ExecutorService extends Executor
          *
          * public class Executors
+         *
+         * Executors.newFixedThreadPool()
+         * 使用一个基于链表结构的阻塞队列(LinkedBlockingQueue)，此队列安FIFO排序元素，吞吐量通常要高于ArrayBlockingQueue
          */
         ExecutorService pool = Executors.newFixedThreadPool(2);
         /**
