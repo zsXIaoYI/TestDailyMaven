@@ -29,7 +29,7 @@ public class ThreadPoolExecutorUseBoundedQueue implements Runnable {
     /**
      * 分析:线程池的corePoolSize为1，任务1提交后，线程开始执行，corePoolSize 数量用完，接着任务2、3、4提交，放到了有界队列中，此时有界队列也满了。
      * 继续提交任务5，由于当前运行的线程数poolSize < maximumPoolSize,线程池尝试new一个新的线程来执行任务5，所以任务5会接着执行。
-     * 当继续提交任务6时，poolSize达到了maximumPoolSize，有界队列也满了，所以线程池执行了拒绝操作。
+     * 当继续提交任务6时，poolSize达到了maximumPoolSize，线程池也满了，所以线程池执行了拒绝操作。
      * @param args
      */
 
