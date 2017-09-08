@@ -117,4 +117,17 @@ public class MapTest {
         }
     }
 
+    /**
+     * map.put(1,"小1");
+     * map.put(1,"小2");
+     *  map返回: {1=小2}
+     */
+    @Test
+    public void test(){
+        Map<Integer,String> map = new HashMap<>();
+        map.put(new Integer(1),"小1");
+        map.put(new Integer(1),"小2");
+        System.out.println(map);
+    }
+
 }
