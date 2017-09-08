@@ -42,9 +42,12 @@ public class IteratingCar {
     }
 
     public static List<String> getModelsAfter2000UsingPipeline(List<Car> carList){
+        /**
+         * reversed(): 降序
+         */
         return carList.stream()
                 .filter(car -> car.getYear() > 2000)
-                .sorted(Comparator.comparing(Car::getYear))
+                .sorted(Comparator.comparing(Car::getYear).reversed())
                 .map(Car::getModel)
                 .collect(Collectors.toList());
     }
