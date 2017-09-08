@@ -18,16 +18,16 @@ public class ArraySearch {
         int start = 0;
         int end = arr.length - 1;
 
-        int midddle = (start + end) / 2;
+        int middle = (start + end) / 2;
 
         while (start < end){
-            if (arr[midddle] < arr[midddle - 1] && arr[midddle] < arr[midddle + 1])
-                return midddle;
-            if (arr[midddle - 1] >= arr[midddle])
-                start = midddle;
-            if (arr[midddle + 1] >= arr[midddle])
-                end = midddle;
-            midddle = (start + end) / 2;
+            if (arr[middle] < arr[middle - 1] && arr[middle] < arr[middle + 1])
+                return middle;
+            if (arr[middle - 1] >= arr[middle])
+                start = middle;
+            if (arr[middle + 1] >= arr[middle])
+                end = middle;
+            middle = (start + end) / 2;
         }
         return 0;
     }
