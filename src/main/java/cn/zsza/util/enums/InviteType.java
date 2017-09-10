@@ -1,4 +1,4 @@
-package cn.zsza.util;
+package cn.zsza.util.enums;
 
 /**
  * @author shanchong
