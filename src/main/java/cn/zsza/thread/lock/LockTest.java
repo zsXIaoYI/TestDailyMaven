@@ -2,7 +2,7 @@ package cn.zsza.thread.lock;
 
 public class LockTest {
 	public static void main(String[] args) {
-		BufferInterruptibly  buff = new BufferInterruptibly ();
+		BufferInterruptibly  buff = new BufferInterruptibly();
 
 		Writer writer = new Writer(buff);
 		Reader reader = new Reader(buff);
