@@ -4,9 +4,9 @@ import cn.zsza.zs_base.entity.Node;
 /**
  * Created by ZhangSong on 2017/5/2.
  * 20:43
- * 单向链表
+ * 单向链表,只有一个节点
  */
-public class LinkedListDemo {
+public class LinkedListDemo<T> {
     private Node head;
 
     public LinkedListDemo() {
@@ -24,7 +24,7 @@ public class LinkedListDemo {
      * 尾插法
      * @param obj
      */
-    public void add(Object obj){
+    public void add(T obj){
         if (isEmpty()){
             head = new Node(obj);
         }else {
@@ -55,7 +55,7 @@ public class LinkedListDemo {
     }
 
     public static void main(String[] args) {
-        LinkedListDemo linkedListDemo = new LinkedListDemo();
+        LinkedListDemo<String> linkedListDemo = new LinkedListDemo<>();
 
         System.out.println("插入数据之前size:" + linkedListDemo.size());
         linkedListDemo.add("aa");
