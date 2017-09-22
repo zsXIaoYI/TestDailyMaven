@@ -1,30 +1,11 @@
 package cn.zsza.dataStructure.link;
 
+import cn.zsza.zs_base.entity.Node;
 /**
  * Created by ZhangSong on 2017/5/2.
  * 20:43
+ * 单向链表
  */
-class Node<T>{
-    private T value;
-    private Node next;
-
-    public Node(T obj) {
-        this.value = obj;
-    }
-
-    public T getValue() {
-        return value;
-    }
-
-    public void setNext(Node next) {
-        this.next = next;
-    }
-
-    public Node getNext() {
-        return next;
-    }
-}
-
 public class LinkedListDemo {
     private Node head;
 
@@ -38,8 +19,12 @@ public class LinkedListDemo {
             return false;
         }
     }
+
+    /**
+     * 尾插法
+     * @param obj
+     */
     public void add(Object obj){
-        System.out.println("add");
         if (isEmpty()){
             head = new Node(obj);
         }else {
@@ -66,7 +51,7 @@ public class LinkedListDemo {
         for (int i = 0; i < index; i++) {
             reference = reference.getNext();
         }
-        return reference.getValue();
+        return reference.getData();
     }
 
     public static void main(String[] args) {
