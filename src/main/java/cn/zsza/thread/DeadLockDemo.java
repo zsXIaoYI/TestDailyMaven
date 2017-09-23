@@ -16,7 +16,6 @@ public class DeadLockDemo {
     public static void main(String[] args) {
         new DeadLockDemo().deadLock();
     }
-
     private void deadLock() {
         Thread t1 = new Thread(() -> {
             synchronized (A){
@@ -25,6 +24,7 @@ public class DeadLockDemo {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                System.out.println("t1...B之前");
                 synchronized (B){
                     System.out.println(1);
                 }
@@ -41,6 +41,5 @@ public class DeadLockDemo {
         });
         t1.start();
         t2.start();
-
     }
 }
