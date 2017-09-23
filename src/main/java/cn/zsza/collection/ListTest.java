@@ -93,7 +93,7 @@ public class ListTest {
     }
 
     /**
-     * asList 接受的参数是一个泛型的变长参数，我们知道基本数据类型是无法发型化的，也就是说 8 个基本类型是无法作为 asList 的参数的，
+     * asList 接受的参数是一个泛型的变长参数，我们知道基本数据类型是无法泛化的，也就是说8个基本类型是无法作为 asList 的参数的，
      * 要想作为泛型参数就必须使用其所对应的包装类型
      */
     @Test
@@ -102,9 +102,13 @@ public class ListTest {
         Integer a2[]  = new Integer[]{1,2,3};
         String a3[] = new String[]{"a","b","c"};
 
-        System.out.println(Arrays.asList(a1));
+        List<int[]> ints = Arrays.asList(a1);
+
+        System.out.println(ints);
         System.out.println(Arrays.asList(a2));
         System.out.println(Arrays.asList(a3));
+
+
 
     }
     @Test
