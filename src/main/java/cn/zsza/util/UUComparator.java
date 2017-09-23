@@ -1,9 +1,7 @@
 package cn.zsza.util;
 
 import cn.zsza.zs_base.entity.UU;
-
 import java.util.Comparator;
-
 /**
  * Created by ZhangSong on 2017/9/23.
  * 13:29
