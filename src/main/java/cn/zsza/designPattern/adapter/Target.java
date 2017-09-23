@@ -15,7 +15,7 @@ public interface Target {
 
 
     /**
-     * 这是源类Adapteee没有的方法
+     * 这是源类Adaptee没有的方法
      */
     public void sampleOperation2();
 }
