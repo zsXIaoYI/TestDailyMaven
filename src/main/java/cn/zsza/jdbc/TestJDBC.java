@@ -46,7 +46,7 @@ public class TestJDBC {
             conn = JdbcTools.getConnection();
             conn.setAutoCommit(false);
             st  = conn.prepareStatement(sql);
-            for (int i = 1; i < 1000001; i++){
+            for (int i = 1; i < 12000001; i++){
                 st.setString(1, "a"+ i);
                 st.setInt(2,(int)(Math.random()*50) + 50);
                 st.addBatch();
@@ -144,6 +144,37 @@ public class TestJDBC {
             JdbcTools.free(rs,st,conn);
         }
 
+    }
+    /**
+     * 查询行数
+     * @throws SQLException
+     */
+    @Test
+    public void count() throws SQLException {
+        String sql = "select count(*) FROM tx_person";
+        try {
+            conn = JdbcTools.getConnection();
+            conn.setAutoCommit(false);
+            st = conn.prepareStatement(sql);
+            ResultSet res = st.executeQuery();
+            if (res.next()){
+                int count1 = res.getInt(1);
+                System.out.println("count1:" + count1);
+            }
+            System.out.println("...........");
+            ResultSet res2 = st.executeQuery();
+            if (res2.next()){
+                int count2 = res2.getInt(1);
+                System.out.println("count2:" + count2);
+            }
+
+            conn.commit();
+        } catch (SQLException e) {
+            conn.rollback();
+            e.printStackTrace();
+        }finally {
+            JdbcTools.free(rs,st,conn);
+        }
     }
 
 
