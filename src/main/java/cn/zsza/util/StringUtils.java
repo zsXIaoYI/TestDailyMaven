@@ -121,7 +121,7 @@ public class StringUtils {
                     }
                     String finalR3 = r3 + result3.reverse().toString();
                     resultTmp = finalR3 + result.reverse().toString();
-                }else if (leth1 == leth2){
+                }else if (leth1 == leth2){      // 如果字符串长度相等，则进位1 + result.reverse().toString()
                     resultTmp = "1" + result.reverse().toString();
                 }
             }else {
@@ -131,6 +131,12 @@ public class StringUtils {
         return resultTmp;
     }
 
+    /**
+     *
+     * @param s1
+     * @param s2 对较短的s2进行补零
+     * @return
+     */
     public static String addBySum2(String s1,String s2){
         String resultTmp;
         StringBuffer result = new StringBuffer();
