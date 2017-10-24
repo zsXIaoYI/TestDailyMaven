@@ -31,7 +31,7 @@ public class ReferencePkValue2 {
     public static void main(String[] args) {
         ReferencePkValue2 t = new ReferencePkValue2();
 
-        int a = 99;
+        int a = 9;
         t.test1(a);
         System.out.println("a=" +a);
 
