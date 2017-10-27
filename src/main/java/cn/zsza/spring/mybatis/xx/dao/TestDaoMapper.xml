@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置实体对象
+命名空间，随便起名字
+-->
+<mapper namespace="cn.zsza.spring.mybatis.xx.dao.TestDao">
+
+    <resultMap id="testResultMap" type="cn.zsza.spring.mybatis.xx.entity.Test" >
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="song" property="song" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <select id="selectList" resultMap="testResultMap">
+        SELECT * FROM public.test
+    </select>
+
+</mapper>
