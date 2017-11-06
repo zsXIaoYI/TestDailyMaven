@@ -5,6 +5,7 @@ import java.util.Arrays;
 /**
  * Created by ZhangSong on 2017/9/29.
  * 18:27
+ * 数组排序，数组前半部分是奇数，后半部分是偶数
  */
 public class ArrayOddAndEven {
     public static void main(String[] args) {
@@ -33,6 +34,5 @@ public class ArrayOddAndEven {
                 arr[end] = temp;
             }
         }
-
     }
 }
