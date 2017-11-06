@@ -4,6 +4,7 @@ import org.junit.Test;
 /**
  * Created by ZhangSong on 2017/9/23.
  * 17:30
+ * 进制转换
  */
 public class BinaryConvert {
     // 十进制转换成二级制
